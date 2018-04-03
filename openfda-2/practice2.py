@@ -12,9 +12,9 @@ repos_raw = r1.read().decode("utf-8")
 conn.close()
 
 repos = json.loads(repos_raw)
+for i in range (len (repos['results'])):
+    aspirin = repos['results'][i]
 
-for elem in repos["results"]:
-	if repos["results"][0]["openfda"]["manufacturer_name"]!=[]:
-		print("Manufacter:", repos["results"][0]["openfda"]["manufacturer_name"])
-	else:
-		print("empty list")
+    print ('ID: ',aspirin['id'])
+    if (aspirin['openfda']):
+        print('Fabricante: ', aspirin['openfda']['manufacturer_name'][0])
