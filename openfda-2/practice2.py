@@ -14,7 +14,5 @@ conn.close()
 repos = json.loads(repos_raw)
 for i in range (len (repos['results'])):
     aspirin = repos['results'][i]
-
-    print ('ID: ',aspirin['id'])
     if (aspirin['openfda']):
-        print('Fabricante: ', aspirin['openfda']['manufacturer_name'][0])
+        print('Manufacturer: ', aspirin['openfda']['manufacturer_name'][0])
