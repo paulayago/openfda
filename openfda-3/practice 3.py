@@ -1,6 +1,6 @@
 # -- IP and the port of the server
 IP = "localhost"  # Localhost means "I": your local machine
-PORT = 8009
+PORT = 8020
 import http.server
 import socketserver
 import http.client
@@ -18,20 +18,21 @@ conn.close()
 repos = json.loads(repos_raw)
 drugs = []
 
-
-for elem in repos["results"]:
-    if elem["openfda"]=={}:
+for i in range (len (repos['results'])):
+    aspirin = repos['results'][i]
+    if (aspirin['openfda']) == {}:
         drugs.append("")
     else:
-        drugs.append(elem["openfda"]["generic_name"][0])
+        drugs.append(aspirin["openfda"]["generic_name"][0])
+
 
 header = "<ol>"+"\n"
 finish = "</ol>"+"\n"
 
 with open("htmlpractice3.html", "w") as f:
     f.write(header)
-    for elem in drugs:
-        elemlist = "<li>" + elem + "</li>" + "\n"
+    for i in drugs:
+        elemlist = "<li>" + i + "</li>" + "\n"
         f.write(elemlist)
     f.write(finish)
 
