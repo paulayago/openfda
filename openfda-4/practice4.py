@@ -23,8 +23,8 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                 message = f.read()
                 # Write content as utf-8 data
                 self.wfile.write(bytes(message, "utf8"))
-
-        elif 'search' in self.path: # let´s try to find a drug and a limit entered by user
+        #When the client introduces a drug and a limit in the html, a new search is taking place that includes the word search in the path
+        elif 'search' in self.path:
             headers = {'User-Agent': 'http-client'}
             conn = http.client.HTTPSConnection("api.fda.gov")
             #From the search path we remove "/search" and the "?", then we separate each word by ""
