@@ -66,7 +66,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         else:
             parameter = ""
 
-        limit = 1
+        limit = 10
 
         # Obtain the arguments
         if parameter:
