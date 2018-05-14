@@ -25,7 +25,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         html_list = """
                                 <html>
                                     <head>
-                                        <title>OpenFDA Cool App</title>
+                                        <title>OpenFDA </title>
                                     </head>
                                     <body>
                                         <ul>
@@ -65,7 +65,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             parameter = search_resource[1]
         else:
             parameter = ""
-        #This is the maximun number of paramaters, but one parameter can include several arguments
+
         limit = 1
 
         # Obtain the arguments
@@ -212,7 +212,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
         #Extension IV: Redirect and Authentication
         elif 'redirect' in self.path:
-            self.send_error(302)
+            self.send_response(302)
             self.send_header('Location', 'http://localhost:'+str(PORT))
             self.end_headers()
         elif 'secret' in self.path:
@@ -220,7 +220,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('WWW-Authenticate', 'Basic realm="Mi servidor"')
             self.end_headers()
 
-        #Extensión II: Implement 404, Not found
+        #Extension II: Implement 404, Not found
         else:
             self.send_error(404)
             self.send_header('Content-type', 'text/plain; charset=utf-8')

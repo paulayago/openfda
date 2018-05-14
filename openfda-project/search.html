@@ -5,31 +5,30 @@
 <body style="background-color: pink">
     <h1>OpenFDA Client </h1>
 
-    <form method="get" action="searchDrug">
-        <input type = "submit" value="Drug Search">
-        <input type = "text" name="drug"></input>
-        </input>
+    <form action="searchDrug">
+        <input type = "submit" value="Drug Search"></input>
+        <input name="active_ingredient" type="text"><br>
     </form>
     -----------------------------------------------
-    <form method="get" action="listDrugs">
-        <input type = "submit" value="Drug List">
-        <input type = "number" name="drug"></input>
-        </input>
-    </form>
-    -----------------------------------------------
-     <form method="get" action="searchCompany">
+    <form action="searchCompany">
         <input type = "submit" value="Company Search">
         <input type = "text" name="company"></input>
         </input>
     </form>
     -----------------------------------------------
-    <form method="get" action="listCompanies">
+     <form action="listDrugs">
+        <input type = "submit" value="Drug List">
+        <input type = "number" name="drug"></input>
+        </input>
+    </form>
+    -----------------------------------------------
+    <form action="listCompanies">
         <input type = "submit" value="Company List">
         <input type = "number" name="drug"></input>
         </input>
     </form>
     ------------------------------------------------
-    <form method="get" action="listWarnings">
+    <form action="listWarnings">
         <input type = "submit" value="Warnings List">
         <input type = "number" name="drug"></input>
         </input>
