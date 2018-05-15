@@ -65,8 +65,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             parameter = search_resource[1]
         else:
             parameter = ""
-
-        limit = 10
+        limit = 1
 
         # Obtain the arguments
         if parameter:
@@ -167,6 +166,10 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             drugs = []
+            #As we need to know the number of drugs the client wants to be display on the screen, we need to isolate
+            #that value from the saerch path, if not, it would always return only 1 drug, as the limit is defined above
+            if len(self.path.split("?")) > 1:
+                limit = self.path.split("?")[1].split("=")[1]
             results = self.obtain_results(limit)
             for element in results:
                 if ('generic_name' in element['openfda']):
@@ -184,6 +187,8 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             companies = []
+            if len(self.path.split("?")) > 1:
+                limit = self.path.split("?")[1].split("=")[1]
             results = self.obtain_results (limit)
             for element in results:
                 if ('manufacturer_name' in element['openfda']):
@@ -201,6 +206,8 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             warnings = []
+            if len(self.path.split("?")) > 1:
+                limit = self.path.split("?")[1].split("=")[1]
             results = self.obtain_results (limit)
             for element in results:
                 if ('warnings' in element):
