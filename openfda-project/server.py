@@ -166,6 +166,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             drugs = []
+            #Extension I: Limit
             #As we need to know the number of drugs the client wants to be display on the screen, we need to isolate
             #that value from the saerch path, if not, it would always return only 1 drug, as the limit is defined above
             if len(self.path.split("?")) > 1:
